@@ -90,9 +90,10 @@ WHERE actor.actor_id IN (SELECT film_actor.actor_id FROM film_actor WHERE film_a
 -- 7c.
 SELECT first_name, last_name, email
 FROM customer
-WHERE customer.address_id IN (SELECT address.address_id FROM address WHERE address.city_id IN
-(SELECT city.city_id FROM city INNER JOIN country WHERE city.country_id=country.country_id AND 
-country.country = "Canada"));
+INNER JOIN address ON customer.address_id = address.address_id
+INNER JOIN city ON address.city_id = city.city_id
+INNER JOIN country ON city.country_id = country.country_id
+WHERE country.country = "Canada";
 
 -- 7d.
 SELECT title, category
