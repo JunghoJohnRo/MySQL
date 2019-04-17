@@ -17,8 +17,8 @@ SELECT * FROM actor WHERE actor.last_name LIKE "%LI%"
 ORDER BY last_name ASC, first_name ASC;
 
 -- 2d.
-SELECT country_id, country FROM country WHERE country.country 
-IN ("Afghanistan", "Bangladesh", "China");
+SELECT country_id, country FROM country 
+WHERE country.country IN ("Afghanistan", "Bangladesh", "China");
 
 -- 3a.
 ALTER TABLE actor ADD COLUMN description BLOB;
@@ -34,11 +34,11 @@ SELECT last_name, COUNT(last_name) FROM actor GROUP BY last_name
 HAVING COUNT(last_name) > 2;
 
 -- 4c.
-SELECT * FROM actor WHERE first_name="GROUCHO" AND last_name="WILLIAMS";
-UPDATE actor SET first_name="HARPO" WHERE actor_id=172; 
+SELECT * FROM actor WHERE first_name = "GROUCHO" AND last_name = "WILLIAMS";
+UPDATE actor SET first_name = "HARPO" WHERE actor_id = 172; 
 
 -- 4d.
-UPDATE actor SET first_name="GROUCHO" WHERE actor_id=172;
+UPDATE actor SET first_name = "GROUCHO" WHERE actor_id = 172;
 
 -- 5a.
 SHOW CREATE TABLE address;
@@ -64,7 +64,7 @@ GROUP BY film.title;
 -- 6d.
 SELECT title, COUNT(inventory.inventory_id) 
 FROM film
-INNER JOIN inventory ON film.film_id=inventory.film_id
+INNER JOIN inventory ON film.film_id = inventory.film_id
 WHERE film.title="Hunchback Impossible";
 
 -- 6e.
@@ -92,7 +92,7 @@ SELECT first_name, last_name, email
 FROM customer
 WHERE customer.address_id IN (SELECT address.address_id FROM address WHERE address.city_id IN
 (SELECT city.city_id FROM city INNER JOIN country WHERE city.country_id=country.country_id AND 
-country.country="Canada"));
+country.country = "Canada"));
 
 -- 7d.
 SELECT title, category
