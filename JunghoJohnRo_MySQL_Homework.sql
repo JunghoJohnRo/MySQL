@@ -77,9 +77,8 @@ ORDER BY last_name ASC;
 -- 7a.
 SELECT title 
 FROM film
-INNER JOIN language on film.language_id = language.language_id
-WHERE language.name =  "English" 
-AND film.title LIKE "%K" OR film.title LIKE "%Q";
+WHERE (title LIKE "%K" OR title LIKE "%Q")
+and language_id = (SELECT language_id FROM language where name = 'English');
 
 -- 7b.
 SELECT first_name, last_name 
