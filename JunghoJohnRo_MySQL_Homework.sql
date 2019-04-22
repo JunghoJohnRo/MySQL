@@ -78,7 +78,7 @@ ORDER BY last_name ASC;
 SELECT title 
 FROM film
 WHERE (title LIKE "%K" OR title LIKE "%Q")
-and language_id = (SELECT language_id FROM language where name = 'English');
+AND language_id = (SELECT language_id FROM language where name = 'English');
 
 -- 7b.
 SELECT first_name, last_name 
